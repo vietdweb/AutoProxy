@@ -110,10 +110,22 @@ class ProxyWorker:
 
         try:
             with sync_playwright() as p:
-                try:
-                    browser = p.chromium.launch(**launch_kwargs)
-                except Exception:
-                    launch_kwargs.pop("channel", None)
+                browser = None
+                for attempt in range(2):
+                    try:
+                        browser = p.chromium.launch(**launch_kwargs)
+                        break
+                    except Exception as launch_err:
+                        err_str = str(launch_err)
+                        launch_kwargs.pop("channel", None)
+                        if "executable doesn't exist" in err_str.lower() or "playwright install" in err_str.lower() or attempt == 0:
+                            log_manager.add("Đang tự động tải bộ cài Chromium vào máy chủ Render...", "warn")
+                            import subprocess
+                            subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=False)
+                        else:
+                            raise launch_err
+
+                if not browser:
                     browser = p.chromium.launch(**launch_kwargs)
 
                 log_manager.add("Trình duyệt Chromium đã sẵn sàng hoạt động.", "success")
