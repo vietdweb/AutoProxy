@@ -2,7 +2,7 @@ services:
   - type: web
     name: autoproxy-collector
     env: python
-    buildCommand: pip install -r requirements.txt && playwright install chromium --with-deps
+    buildCommand: pip install -r requirements.txt && playwright install chromium
     startCommand: python web_server.py
     plan: free
     autoDeploy: true

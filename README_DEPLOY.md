@@ -40,7 +40,7 @@ git push -u origin main
    - **Runtime**: `Python 3`
    - **Build Command**:
      ```bash
-     pip install -r requirements.txt && playwright install chromium --with-deps
+     pip install -r requirements.txt && playwright install chromium
      ```
    - **Start Command**:
      ```bash
