@@ -58,7 +58,7 @@ class WebshareHelper:
         B2: Vào webshare đăng ký với email vừa tạo và password cố định, tích chọn I agree rồi Sign Up.
         """
         print(f"[WEBSHARE] Đang truy cập trang đăng ký: {config.WEBSHARE_REGISTER_URL}")
-        self.page.goto(config.WEBSHARE_REGISTER_URL, wait_until="networkidle", timeout=config.DEFAULT_TIMEOUT)
+        self.page.goto(config.WEBSHARE_REGISTER_URL, wait_until="domcontentloaded", timeout=config.DEFAULT_TIMEOUT)
         self.page.wait_for_timeout(2000)
 
         # 1. Nhập Email
@@ -202,7 +202,7 @@ class WebshareHelper:
                 return false;
             }""")
             if not clicked_nav:
-                self.page.goto(config.WEBSHARE_PROXYLIST_URL, wait_until="networkidle", timeout=20000)
+                self.page.goto(config.WEBSHARE_PROXYLIST_URL, wait_until="domcontentloaded", timeout=20000)
             self.page.wait_for_timeout(4000)
 
         print(f"[WEBSHARE] Đang ở trang: {self.page.url}")

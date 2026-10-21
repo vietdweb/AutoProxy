@@ -18,8 +18,8 @@ import os
 HEADLESS_MODE = False
 BROWSER_CHANNEL = "chrome"
 
-# Tự động chuyển chế độ khi deploy lên Render / Linux Server
-IS_RENDER = os.environ.get("RENDER") is not None or os.environ.get("PORT") is not None
+# Chỉ bật chế độ Cloud khi thực sự chạy trên máy chủ Render (Linux)
+IS_RENDER = (os.name != 'nt') and (os.environ.get("RENDER") is not None)
 if IS_RENDER:
     HEADLESS_MODE = True
     BROWSER_CHANNEL = None  # Dùng Chromium chuẩn cài đặt trong môi trường Linux

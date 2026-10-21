@@ -165,7 +165,7 @@ class ProxyWorker:
                         if activate_link:
                             log_manager.add(f"[XÁC THỰC] Kích hoạt tài khoản qua link...", "success")
                             try:
-                                tab_webshare.goto(activate_link, wait_until="networkidle", timeout=config.DEFAULT_TIMEOUT)
+                                tab_webshare.goto(activate_link, wait_until="domcontentloaded", timeout=config.DEFAULT_TIMEOUT)
                                 tab_webshare.wait_for_timeout(3000)
                             except Exception as ex:
                                 log_manager.add(f"[XÁC THỰC] {ex}", "warn")

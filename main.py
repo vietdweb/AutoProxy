@@ -79,7 +79,7 @@ def run():
                     if activate_link:
                         print(f"[XÁC THỰC] Tự động kích hoạt tài khoản qua link: {activate_link}")
                         try:
-                            tab_webshare.goto(activate_link, wait_until="networkidle", timeout=config.DEFAULT_TIMEOUT)
+                            tab_webshare.goto(activate_link, wait_until="domcontentloaded", timeout=config.DEFAULT_TIMEOUT)
                             tab_webshare.wait_for_timeout(3000)
                         except Exception as e:
                             print(f"[XÁC THỰC] Lưu ý khi mở link xác thực: {e}")
