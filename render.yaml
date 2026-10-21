@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: autoproxy-collector
+    env: python
+    buildCommand: pip install -r requirements.txt && playwright install chromium --with-deps
+    startCommand: python web_server.py
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: PORT
+        value: 10000
