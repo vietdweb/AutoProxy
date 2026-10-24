@@ -1,5 +1,7 @@
 # AutoProxy - Công cụ tự động lấy proxy từ Webshare qua OTPMail.vn
 # Patch-1
+# Patch-1
+
 Tool tự động hóa quy trình đăng ký tài khoản Webshare thông qua dịch vụ tạo email tạm thời `otpmail.vn` và lưu danh sách 10 proxy miễn phí vào file.
 
 ## 📋 Quy trình hoạt động
